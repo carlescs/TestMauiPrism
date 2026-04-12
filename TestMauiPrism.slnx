@@ -1,6 +1,9 @@
 <Solution>
+  <Project Path="TestMauiPrism.Application.Tests/TestMauiPrism.Application.Tests.csproj" />
   <Project Path="TestMauiPrism.Application/TestMauiPrism.Application.csproj" />
+  <Project Path="TestMauiPrism.Domain.Tests/TestMauiPrism.Domain.Tests.csproj" />
   <Project Path="TestMauiPrism.Domain/TestMauiPrism.Domain.csproj" />
+  <Project Path="TestMauiPrism.Infrastructure.Tests/TestMauiPrism.Infrastructure.Tests.csproj" />
   <Project Path="TestMauiPrism.Infrastructure/TestMauiPrism.Infrastructure.csproj" />
   <Project Path="TestMauiPrism/TestMauiPrism.csproj">
     <Deploy Solution="Debug|*" />
