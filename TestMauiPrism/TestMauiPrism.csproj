@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFrameworks>net10.0-android</TargetFrameworks>
@@ -66,11 +66,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
-      <PackageReference Include="Microsoft.Maui.Controls.Core" Version="$(MauiVersion)" />
-		<PackageReference Include="Microsoft.Maui.Controls.Xaml" Version="$(MauiVersion)" />
-		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="10.0.0" />
+		<PackageReference Include="Microsoft.Maui.Controls" Version="10.0.51" />
+      <PackageReference Include="Microsoft.Maui.Controls.Core" Version="10.0.51" />
+		<PackageReference Include="Microsoft.Maui.Controls.Xaml" Version="10.0.51" />
+		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="10.0.51" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="10.0.5" />
 		<PackageReference Include="Prism.DryIoc.Maui" Version="9.0.537" />
 	</ItemGroup>
 
