@@ -1,9 +1,9 @@
 ﻿using Microsoft.Extensions.Logging;
 using Prism;
-using TestMauiPrism.Application.Abstractions;
-using TestMauiPrism.Application.UseCases;
-using TestMauiPrism.Infrastructure.Persistence;
+using TestMauiPrism.Application;
+using TestMauiPrism.Infrastructure;
 using TestMauiPrism.ViewModels;
+using TestMauiPrism.Views;
 
 namespace TestMauiPrism
 {
@@ -18,10 +18,11 @@ namespace TestMauiPrism
                 {
                     prism.RegisterTypes(container =>
                     {
-                        container.RegisterSingleton<ICounterRepository, InMemoryCounterRepository>();
-                        container.Register<IncrementCounterUseCase>();
+                        container.AddInfrastructure();
+                        container.AddApplication();
                         container.RegisterForNavigation<NavigationPage>();
                         container.RegisterForNavigation<MainPage, MainPageViewModel>();
+                        container.RegisterForNavigation<CounterDetailPage, CounterDetailPageViewModel>();
                     });
 
                     prism.CreateWindow("NavigationPage/MainPage");

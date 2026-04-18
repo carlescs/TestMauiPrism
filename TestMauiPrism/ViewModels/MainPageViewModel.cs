@@ -1,5 +1,6 @@
 using Prism.Commands;
 using Prism.Mvvm;
+using Prism.Navigation;
 using TestMauiPrism.Application.UseCases;
 
 namespace TestMauiPrism.ViewModels;
@@ -7,12 +8,18 @@ namespace TestMauiPrism.ViewModels;
 public sealed class MainPageViewModel : BindableBase
 {
     private readonly IncrementCounterUseCase _incrementCounterUseCase;
+    private readonly INavigationService _navigationService;
     private string _counterButtonText = "Click me";
+    private int _currentCount;
 
-    public MainPageViewModel(IncrementCounterUseCase incrementCounterUseCase)
+    public MainPageViewModel(
+        IncrementCounterUseCase incrementCounterUseCase,
+        INavigationService navigationService)
     {
         _incrementCounterUseCase = incrementCounterUseCase;
+        _navigationService = navigationService;
         IncrementCommand = new DelegateCommand(OnIncrement);
+        NavigateToDetailCommand = new DelegateCommand(OnNavigateToDetail);
     }
 
     public string CounterButtonText
@@ -22,10 +29,17 @@ public sealed class MainPageViewModel : BindableBase
     }
 
     public DelegateCommand IncrementCommand { get; }
+    public DelegateCommand NavigateToDetailCommand { get; }
 
     private void OnIncrement()
     {
-        var count = _incrementCounterUseCase.Execute();
-        CounterButtonText = count == 1 ? "Clicked 1 time" : $"Clicked {count} times";
+        _currentCount = _incrementCounterUseCase.Execute();
+        CounterButtonText = _currentCount == 1 ? "Clicked 1 time" : $"Clicked {_currentCount} times";
+    }
+
+    private async void OnNavigateToDetail()
+    {
+        var parameters = new NavigationParameters { { NavigationKeys.Count, _currentCount } };
+        await _navigationService.NavigateAsync("CounterDetailPage", parameters);
     }
 }

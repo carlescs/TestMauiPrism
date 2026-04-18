@@ -79,4 +79,10 @@
 	  <ProjectReference Include="..\TestMauiPrism.Infrastructure\TestMauiPrism.Infrastructure.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <MauiXaml Update="Views\CounterDetailPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
 </Project>
