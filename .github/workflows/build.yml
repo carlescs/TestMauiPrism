@@ -124,7 +124,7 @@ jobs:
         run: dotnet workload install maui-windows
 
       - name: Restore dependencies
-        run: dotnet restore TestMauiPrism/TestMauiPrism.csproj -p:RestoreTargetFrameworks=net10.0-windows10.0.19041.0 /p:RuntimeIdentifier=win-x64
+        run: dotnet restore TestMauiPrism/TestMauiPrism.csproj -p:RestoreTargetFrameworks=net10.0-windows10.0.19041.0 -p:RuntimeIdentifier=win-x64
 
       - name: Publish Windows app
         run: >
