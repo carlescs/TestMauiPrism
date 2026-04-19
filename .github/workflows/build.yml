@@ -76,11 +76,8 @@ jobs:
       - name: Install MAUI iOS & macCatalyst workloads
         run: dotnet workload install maui-ios maui-maccatalyst
 
-      - name: Restore dependencies
-        run: >
-          dotnet restore TestMauiPrism/TestMauiPrism.csproj
-          -p:RestoreTargetFrameworks="net10.0-ios;net10.0-maccatalyst"
-          -p:RestoreRuntimeIdentifiers="iossimulator-x64;maccatalyst-x64"
+      - name: Restore iOS dependencies
+        run: dotnet restore TestMauiPrism/TestMauiPrism.csproj -p:TargetFramework=net10.0-ios -p:RuntimeIdentifier=iossimulator-x64
 
       - name: Build iOS (simulator)
         run: >
@@ -91,6 +88,9 @@ jobs:
           /p:RuntimeIdentifier=iossimulator-x64
           /p:CodesignKey=""
           /p:CodesignEntitlements=""
+
+      - name: Restore macCatalyst dependencies
+        run: dotnet restore TestMauiPrism/TestMauiPrism.csproj -p:TargetFramework=net10.0-maccatalyst -p:RuntimeIdentifier=maccatalyst-x64
 
       - name: Build macCatalyst
         run: >
@@ -124,7 +124,7 @@ jobs:
         run: dotnet workload install maui-windows
 
       - name: Restore dependencies
-        run: dotnet restore TestMauiPrism/TestMauiPrism.csproj -p:RestoreTargetFrameworks=net10.0-windows10.0.19041.0 -p:RuntimeIdentifier=win-x64
+        run: dotnet restore TestMauiPrism/TestMauiPrism.csproj -p:TargetFramework=net10.0-windows10.0.19041.0 -p:RuntimeIdentifier=win-x64
 
       - name: Publish Windows app
         run: >
